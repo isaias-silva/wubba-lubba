@@ -1,5 +1,7 @@
 <template>
-<HeaderComponent/>
+  <div class="todo">
+    <HeaderComponent/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,5 +18,12 @@ export default defineComponent({
 *{
   margin:0;
   padding: 0;
+}
+body, html{
+  height: 100%;
+  width: 100%;
+}
+.todo{
+
 }
 </style>

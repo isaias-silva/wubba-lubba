@@ -55,7 +55,6 @@ export default defineComponent({
     width: 100%;
     grid-template-areas: "logo logo opcoes";
     grid-template-columns:70% 10% ;
-    padding: 2px;
     border-bottom: 1px solid green;
 }
 .logo{
@@ -101,7 +100,7 @@ export default defineComponent({
 .menu label span{
     display: block;
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 4px;
     margin: 5px;
     background-color: greenyellow;
@@ -109,7 +108,7 @@ export default defineComponent({
     border-radius: 10px;
     right: 10px;
 }
-label:hover span{
+.menu label:hover span {
     background-color: green;
     cursor: pointer;
 }
