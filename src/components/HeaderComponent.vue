@@ -14,7 +14,7 @@
             </label>
             <ul>
                <li>
-                opcão teste legal
+                <router-link to="/">home</router-link>
                </li>
                <li>
                 opcão teste legal
