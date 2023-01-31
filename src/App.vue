@@ -31,22 +31,32 @@ html {
   height: 100%;
   width: 100%;
 }
-.todo{
+
+.todo {
   width: 100%;
-  display:grid;
-  grid-template-areas: "header header header" "aside content content" "aside content content";
+  display: grid;
+  height: 100%;
+  grid-template-areas: "header header header header" "aside conten conten conten";
+  grid-template-columns: 10% auto auto;
+  grid-template-rows: auto 100vh auto;
   position: relative;
 }
-.header{
+
+.header {
   grid-area: header;
 
+  top: 0;
 }
-.aside{
+
+.aside {
   grid-area: aside;
 
 }
-.content{
-  grid-area: content;
+
+.content {
+  grid-area: conten;
+  background-color: rgb(58, 58, 58);
   width: 100%;
+  min-height: 100vh;
 }
 </style>

@@ -17,16 +17,10 @@
                 <router-link to="/">home</router-link>
                </li>
                <li>
-                opcão teste legal
+                <a href="https://github.com/isaias-silva/wubba-lubba" target="_blank" rel="noopener noreferrer">github</a>
                </li>
                <li>
-                opcão teste legal
-               </li>
-               <li>
-                opcão teste legal
-               </li>
-               <li>
-                opcão teste legal
+                <a href="https://github.com/isaias-silva" target="_blank" rel="noopener noreferrer">creator</a>
                </li>
             </ul>
         </div>
@@ -84,8 +78,7 @@ export default defineComponent({
 .menu{
     grid-area: opcoes;
     position: relative;
-    display: grid;
-    grid-template-areas: 'menu menu menu' 'list list list';
+
 }
 
 .menu input[type='checkbox']{
@@ -100,7 +93,7 @@ export default defineComponent({
 .menu label span{
     display: block;
     position: relative;
-    width: 90%;
+    width: 80%;
     height: 4px;
     margin: 5px;
     background-color: greenyellow;
@@ -115,12 +108,13 @@ export default defineComponent({
 #checker:checked~ label span:nth-child(1){
 rotate: 45deg;
 top: 10px;
-right: 5px
+right: 5px;
+
 }
 #checker:checked~ label span:nth-child(3){
     rotate: -45deg;
-    right: 10px;
-    top: -6px;
+    right:7px;
+    top:-7px;
 }
 #checker:checked~ label span:nth-child(2){
 opacity: 0;
@@ -130,19 +124,25 @@ opacity: 0;
 }
 .menu ul{
     grid-area: list;
-    position: absolute;
     list-style: none;
-    background-color: rgb(23, 23, 23);
+    position: absolute;
+    right: 0;
+    top:65px;
     width: 100%;
-    padding: 1px;
-    margin: 5px;
+    background-color: rgb(0, 0, 0);
     border-radius: 5px;
     display:none;
-    box-shadow: 0 0 10px green;
 }
 .menu ul li{
     border-bottom: 1px solid #fff;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+.menu ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.menu ul li a:hover{
+    color: rgb(51, 255, 0);
 }
 </style>
