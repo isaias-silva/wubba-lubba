@@ -57,6 +57,7 @@ html {
   grid-area: conten;
   background-color: rgb(58, 58, 58);
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
 }
 </style>

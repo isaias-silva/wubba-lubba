@@ -53,7 +53,7 @@ export default defineComponent({
 <style scoped>
 .aside {
   height: 100%;
-  background-color: black;
+  background-color: rgb(20, 20, 20);
   width: 100%;
   color: #fff;
   height: 100%;
@@ -62,7 +62,7 @@ export default defineComponent({
 }
 
 .aside::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
   background-color: rgb(31, 31, 31);
 
 }

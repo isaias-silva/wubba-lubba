@@ -44,12 +44,12 @@ export default defineComponent({
 <style scoped>
 .header{
     color: #fff;
-    background: black;
+    background:rgb(20, 20, 20);
     display: grid;
     width: 100%;
     grid-template-areas: "logo logo opcoes";
     grid-template-columns:70% 10% ;
-    border-bottom: 1px solid green;
+    border-bottom: 2px solid rgb(0, 255, 0);
 }
 .logo{
     grid-area: logo;
@@ -129,9 +129,10 @@ opacity: 0;
     right: 0;
     top:65px;
     width: 100%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(20, 20, 20);
     border-radius: 5px;
     display:none;
+    z-index: 1000 !important;
 }
 .menu ul li{
     border-bottom: 1px solid #fff;
