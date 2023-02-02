@@ -10,42 +10,27 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import axios from 'axios'
+
 export default defineComponent({
   data: (): { person: { name: string, link: string }[] } => {
     return {
       person: [
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' },
-        { name: 'rick', link: 'a' }
       ]
+    }
+  },
+  created () {
+    this.requestPersons()
+  },
+  methods: {
+    requestPersons () {
+      axios.get('https://rickandmortyapi.com/api/character').then((_response) => {
+        console.log(_response.data)
+        // eslint-disable-next-line array-callback-return, @typescript-eslint/no-empty-function
+        _response.data.results.map((value: { name: string, id: string }) => {
+          this.person.push({ name: value.name, link: `/character/${value.id}` })
+        })
+      })
     }
   }
 })
@@ -79,14 +64,11 @@ export default defineComponent({
 h3 {
   text-shadow: 0px 0px 12px rgb(0, 255, 0);
   font-size: 18px;
-}
-
-ul {
   margin: auto;
 }
 
 li {
-  margin: auto;
+  margin-top: 20px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -97,15 +79,26 @@ li {
 li a {
   text-decoration: none;
   color: #fff;
-  font-size: 18px;
-  border-bottom: 1px solid #fff;
+  font-size: 16px;
   text-align: center;
-  margin: auto;
   width: 50%;
+  position: relative;
+  transition: 0.2s linear;
 }
 
 li a:hover {
   color: greenyellow;
-  border-color: greenyellow;
+}
+li a::before{
+  content: '@';
+  position: absolute;
+  left: -20px;
+  filter: opacity(0);
+}
+li a:hover::before{
+  content: '@';
+  position: absolute;
+  left: -20px;
+  filter: opacity(1);
 }
 </style>

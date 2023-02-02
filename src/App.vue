@@ -48,7 +48,7 @@ body::-webkit-scrollbar {
 
 .header {
   grid-area: header;
-
+z-index: 1000;
   top: 0;
 }
 
@@ -61,23 +61,24 @@ body::-webkit-scrollbar {
   grid-area: conten;
   background-color: rgb(58, 58, 58);
   width: 100%;
-  height: 100vh;
+  height: auto;
   overflow-y: scroll;
   background-image: url('https://gkpb.com.br/wp-content/uploads/2022/11/rick-morty-ultimos-episodios1-scaled-e1667923673907.jpg');
   background-size: cover;
   position: relative;
-  z-index: -1;
+  z-index: 1;
+
 }
 
 .content::after {
   content: '';
   width: 100%;
   display: block;
-  position: absolute;
+  position: fixed;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.619);
   top: 0;
-  z-index: -1;
+  z-index: -1000!important;
 }
 
 .post {
