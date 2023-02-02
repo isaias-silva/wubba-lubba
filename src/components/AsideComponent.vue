@@ -24,13 +24,15 @@ export default defineComponent({
   },
   methods: {
     requestPersons () {
-      axios.get('https://rickandmortyapi.com/api/character').then((_response) => {
-        console.log(_response.data)
-        // eslint-disable-next-line array-callback-return, @typescript-eslint/no-empty-function
-        _response.data.results.map((value: { name: string, id: string }) => {
-          this.person.push({ name: value.name, link: `/character/${value.id}` })
+      for (let i = 1; i < 20; i++) {
+        axios.get(`https://rickandmortyapi.com/api/character/?page=${i}`).then((_response) => {
+          console.log(_response.data)
+          // eslint-disable-next-line array-callback-return, @typescript-eslint/no-empty-function
+          _response.data.results.map((value: { name: string, id: string }) => {
+            this.person.push({ name: value.name, link: `/character/?id=${value.id}` })
+          })
         })
-      })
+      }
     }
   }
 })
@@ -89,13 +91,15 @@ li a {
 li a:hover {
   color: greenyellow;
 }
-li a::before{
+
+li a::before {
   content: '@';
   position: absolute;
   left: -20px;
   filter: opacity(0);
 }
-li a:hover::before{
+
+li a:hover::before {
   content: '@';
   position: absolute;
   left: -20px;

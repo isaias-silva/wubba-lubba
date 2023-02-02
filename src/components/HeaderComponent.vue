@@ -17,6 +17,12 @@
                 <router-link to="/">home</router-link>
                </li>
                <li>
+                <router-link to="/episodes">episodes</router-link>
+               </li>
+               <li>
+                <router-link to="/characters">all characters</router-link>
+               </li>
+               <li>
                 <a href="https://github.com/isaias-silva/wubba-lubba" target="_blank" rel="noopener noreferrer">github</a>
                </li>
                <li>
