@@ -1,5 +1,8 @@
 <template>
-  <div class="post" >
+  <div class="post">
+    <h2>{{ infoCharacters.length }} characters registred</h2>
+  </div>
+  <div class="post" v-for="(infoCharacter,key) in infoCharacters" :key="key">
     <h2>{{ infoCharacter.name }}</h2>
     <img :src="infoCharacter.image" />
     <div class="block">
@@ -17,9 +20,9 @@
 import axios from 'axios'
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'characterPage',
+  name: 'allcharactersPage',
   data (): {
-    infoCharacter: {
+    infoCharacters: {
       id: null | string | undefined,
       name: string | null | undefined,
       gender: string | null | undefined,
@@ -29,38 +32,26 @@ export default defineComponent({
       type: string | null | undefined,
       location: string | null | undefined,
       origin: string | null | undefined
-    }} {
+    }[]} {
     return {
-      infoCharacter: {
-        id: null,
-        name: null,
-        gender: null,
-        image: undefined,
-        species: null,
-        status: null,
-        type: null,
-        location: null,
-        origin: null
-      }
+      infoCharacters: []
     }
   },
   mounted () {
-    const id = this.$route.params.id.toString()
-    this.setCharacter(id)
-  },
-  async updated () {
-    const id = this.$route.params.id.toString()
-    await this.setCharacter(id)
+    this.setCharacters()
   },
   methods: {
-    async setCharacter (id: string | undefined) {
-      if (!id) {
-        return
+    async setCharacters () {
+      for (let i = 0; i < 42; i++) {
+        await axios.get(`https://rickandmortyapi.com/api/character/?page=${i}`).then((response) => {
+          // eslint-disable-next-line array-callback-return
+          response.data.results.map((value: any) => {
+            const { id, name, gender, image, species, status, type, location, origin } = value
+            const objCharacter = { id, name, gender, image, species, status, type, location: location.name, origin: origin.name }
+            this.infoCharacters.push(objCharacter)
+          })
+        })
       }
-      await axios.get(`https://rickandmortyapi.com/api/character/${id}`).then((response) => {
-        const { name, gender, image, species, status, type, location, origin } = response.data
-        this.infoCharacter = { id, name, gender, image, species, status, type, location: location.name, origin: origin.name }
-      })
     }
   }
 })

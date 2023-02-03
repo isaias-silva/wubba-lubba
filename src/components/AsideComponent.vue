@@ -24,12 +24,12 @@ export default defineComponent({
   },
   methods: {
     requestPersons () {
-      for (let i = 1; i < 20; i++) {
+      for (let i = 1; i < 3; i++) {
         axios.get(`https://rickandmortyapi.com/api/character/?page=${i}`).then((_response) => {
           console.log(_response.data)
           // eslint-disable-next-line array-callback-return, @typescript-eslint/no-empty-function
           _response.data.results.map((value: { name: string, id: string }) => {
-            this.person.push({ name: value.name, link: `/character/?id=${value.id}` })
+            this.person.push({ name: value.name, link: `/character/${value.id}` })
           })
         })
       }
@@ -81,7 +81,7 @@ li {
 li a {
   text-decoration: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 13px;
   text-align: center;
   width: 50%;
   position: relative;
